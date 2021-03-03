@@ -24,7 +24,7 @@ body {
 	color: var(--white);
 }
 
-h1, h2, p, a {
+h1, h2, p, a, pre {
 	margin: 0.5em 0.25em;
 } 
 
@@ -34,6 +34,14 @@ a:link {
 
 a:visited {
 	color: var(--orange-dark);
+}
+
+p {
+	line-height: 1.5em;
+}
+
+pre {
+	color: var(--lime);
 }
 
 header h1 {
@@ -46,4 +54,16 @@ header p {
 
 nav li, footer li {
 	display: inline;
+}
+
+article {
+	width: fill;
+	margin: 1em;
+	padding: 1em;
+	background: linear-gradient(var(--medium-dark), var(--dark)) no-repeat fixed;
+	border-radius: 8px;
+}
+
+main {
+	margin-bottom: 2em;
 }
