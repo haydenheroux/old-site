@@ -33,7 +33,7 @@ a:link {
 }
 
 a:visited {
-	color: var(--orange-dark);
+	color: var(--orange-light);
 }
 
 p {
