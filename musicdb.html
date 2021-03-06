@@ -30,18 +30,40 @@ Managing a music library with Bash and *nix tools.
 </nav>
 <main>
 <h2>
+Motivation
+</h2>
+<p>
+Previously, my music library was managed by many files being mapped to many directories. A list of YouTube urls (*.ls) and youtube-dl's batchfile argument were used to download large libraries of music. The download script was very simple (see below), since youtube-dl was handling the for line in file structure for me. However, the process was entirely dependent on youtube-dl, which exits on any error (yes, even with -i passed). As a result, management of my music library was to be handled by my own script, which offers more control, being able to read my own formats and process my own file structure.
+</p>
+<blockquote>
+filepath=`cd ~/music/ &amp;&amp; ls -dx1 */ | dmenu`<br/>
+filetype=`echo -e "mp3\nwav\nvorbis" | dmenu`<br/>
+listfile="${filepath%?}.ls"<br/>
+cd $filepath<br/>
+/usr/local/bin/youtube-dl --batch-file "~/music/$listfile" --extract-audio --audio-format $filetype --restrict-filenames<br/>
+</blockquote>
+<h2>
+File Format
+</h2>
+<p>
+The file format used by the download script requires that the YouTube video ID is in the column, and all consecutive fields are stored in tab-separated columns. The largest storage file (<a href="music.db">music.db</a>) is formed by concatenating many smaller (.olst) files, the process of creating whch is described below.
+</p>
+<p>
+Using the previous file format (a list of YouTube URLS, separated by newlines), use Vim or another capable text editor to isolate the ID part of the URL. In Vim, a command sequence such as "$10hd0" can be used. The longer lists in my library required the use of a macro, which was recorded on the first line, and applied to the remaining lines with "jVG:normal @q" where q was the name macro of the previous command. Writing this buffer, followed by using the paste utlity to merge the file with the ID list and a list of the files in each directory (ls -x1 | paste tmp.ulst &amp; tmp.olst) produces a file with an ID column and a file column, separated by tabs. The process of adding fields can be replicated with the previous command, substituting ls -x1 with a command of your choice.
+</p>
+<h2>
 Structure and Variables
 </h2>
 <blockquote>
 FORMAT="mp3"<br/>
 FILE="music.db"<br/>
-while read -r line; do ID=$(printf "$line" | awk '{print $1}'); ... ; done &#60; $FILE<br/>
+while read -r line; do ID=$(printf "$line" | awk '{print $1}'; done &#60; $FILE<br/>
 </blockquote>
 <h2>
 Using youtube-dl for Download
 </h2>
 <blockquote>
-youtube-dl h --extract-audio --audio-format $FORMAT --restrict-filenames https://youtube.com/watch?v="$ID"<br/>
+youtube-dl --extract-audio --audio-format $FORMAT --restrict-filenames https://youtube.com/watch?v="$ID"<br/>
 </blockquote>
 <h2>
 Finding Output Folder from Identifier
