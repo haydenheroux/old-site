@@ -12,7 +12,7 @@
 html {
 	padding-top: 2em;
 	margin-bottom: 4em;
-	background: linear-gradient(var(--medium-dark), var(--dark)) no-repeat fixed;
+	background: var(--dark) no-repeat fixed;
 }
 
 body {
