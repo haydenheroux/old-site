@@ -69,7 +69,7 @@ youtube-dl --extract-audio --audio-format $FORMAT --restrict-filenames https://y
 Finding Output Folder from Identifier
 </h2>
 <blockquote>
-grep "$ID" music.db | awk '{print $1}' | xargs grep -r | cut -d'.' -f1 | awk '/music/{0; next} NF'<br/>
+grep "$ID" "$FILE" | awk '{print $1}' | xargs grep -r | cut -d'.' -f1 | awk '/music/{0; next} NF'<br/>
 </blockquote>
 <h2>
 Bringing it All Together
@@ -78,7 +78,7 @@ Bringing it All Together
 #!/bin/bash<br/>
 FORMAT="mp3"<br/>
 FILE="music.db"<br/>
-while read -r line; do ID=$(printf "$line" | awk '{print $1}'); /usr/local/bin/youtube-dl --extract-audio --audio-format $FORMAT --restrict-filenames https://www.youtube.com/watch?v="$ID" &amp;&amp; grep -e "$ID" music.db | awk '{print $1}' | xargs grep -r | cut -d'.' -f1 | awk '/music/{0; next} NF' | xargs mv *."$FORMAT"; done &#60; $FILE<br/>
+while read -r line; do ID=$(printf "$line" | awk '{print $1}'); /usr/local/bin/youtube-dl --extract-audio --audio-format $FORMAT --restrict-filenames https://www.youtube.com/watch?v="$ID" &amp;&amp; grep -e "$ID" "$FILE" | awk '{print $1}' | xargs grep -r | cut -d'.' -f1 | awk '/music/{0; next} NF' | xargs mv *."$FORMAT"; done &#60; $FILE<br/>
 </blockquote>
 <h2>
 Revisions and To-Do
