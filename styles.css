@@ -11,18 +11,16 @@
 
 html {
 	padding-top: 2em;
-	margin-bottom: 4em;
-	background: var(--dark) no-repeat fixed;
+	background: var(--background) no-repeat fixed;
 }
 
 body {
-	width: 800px;
+	width: 850px;
 	margin: auto;
-	padding: 1em;
-	padding-bottom: 2em;
-	background-color: var(--medium);
-	border-radius: 8px;
-	color: var(--white);
+	padding: 2em;
+	padding-bottom: 4em;
+	background-color: var(--page-light);
+	color: var(--text);
 }
 
 h1, h2, p, a, pre {
@@ -30,20 +28,23 @@ h1, h2, p, a, pre {
 } 
 
 a:link {
-	color: var(--orange-light);
+	color: var(--link-light);
 }
 
 a:visited {
-	color: var(--orange-light);
+	color: var(--link-dark);
 }
 
 p {
 	line-height: 1.5em;
+	margin-bottom: 2em;
 }
 
 blockquote {
+	margin-left: 2em;
+	margin-bottom: 2em;
 	font-family: 'Roboto Mono', monospace;
-	color: var(--lime);
+	color: var(--highlight);
 }
 
 header h1 {
@@ -62,7 +63,7 @@ article {
 	width: fill;
 	margin: 1em;
 	padding: 1em;
-	background: linear-gradient(var(--medium-dark), var(--dark)) no-repeat fixed;
+	background: var(--page-gray) no-repeat fixed;
 	border-radius: 8px;
 }
 

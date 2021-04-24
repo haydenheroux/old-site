@@ -1,13 +1,9 @@
 :root {
-	--black: #282a36;
-	--dark: #282a36;
-	--medium-dark: #44475a;
-	--medium: #44475a;
-	--medium-light: #6272a4;
-	--light: #f8f8f2;
-	--white: #f8f8f2;
-	--orange-light: #f1fa8c;
-	--orange-dark: #ffb86c;
-	--lime: #50fa7b;
-	--pink: #ff79c6;
+	--background: #181a1b;
+	--text: #333333;
+	--link-dark: #19648f;
+	--link-light: #0f3c56;
+	--page-gray: #efefef;
+	--page-light: #fcfcfc;
+	--highlight: #f13000;
 }
