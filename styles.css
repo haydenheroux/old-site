@@ -64,6 +64,7 @@ blockquote {
 header h1 {
 	font-size: 3em;
 	font-family: 'Baumans', cursive;
+	margin-left: 0;
 }
 
 header p {
