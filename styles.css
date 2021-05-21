@@ -1,7 +1,6 @@
 @import url(colors.css);
 @import url('https://fonts.googleapis.com/css2?family=Baumans&family=IBM+Plex+Mono&family=Merriweather&display=swap');
 
-
 * {
 	margin: 0;
 	padding: 0;
@@ -22,9 +21,13 @@ body {
 	color: var(--text);
 }
 
-h1, h2, p, a, pre {
-	margin: 0.5em 0.25em;
+h1, h2, p {
+	margin: 0.5em 0em 0.5em 0em;
 } 
+
+nav a, footer a {
+	margin: 0.5em 0.5em 0.5em 0em;
+}
 
 a:link {
 	color: var(--link-light);
