@@ -21,6 +21,18 @@ body {
 	color: var(--text);
 }
 
+@media screen and (max-width:992px) {
+	body {
+		width: 80%;
+	}
+}
+
+@media screen and (max-width:600px) {
+	body {
+		width: 100%;
+	}
+}
+
 h1, h2, p {
 	margin: 0.5em 0em 0.5em 0em;
 } 
