@@ -5,6 +5,7 @@
 	margin: 0;
 	padding: 0;
 	font-family: 'Merriweather', serif;
+	font-size: 14px;
 }
 
 html {
@@ -51,7 +52,7 @@ a:visited {
 
 p {
 	line-height: 1.5em;
-	margin-bottom: 2em;
+	margin-bottom: 1.75em;
 }
 
 blockquote {
@@ -83,6 +84,6 @@ article {
 	border-radius: 8px;
 }
 
-main {
-	margin-bottom: 2em;
+article p {
+	margin-bottom: 0.5em;
 }
