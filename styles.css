@@ -1,89 +1,113 @@
 @import url(colors.css);
-@import url('https://fonts.googleapis.com/css2?family=Baumans&family=IBM+Plex+Mono&family=Merriweather&display=swap');
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--background: #181a1b;
+		--text: #fefefe;
+	}
+}
+
+@media (prefers-color-scheme: light) {
+	:root {
+		--background: #fefefe;
+		--text: #181a1b;
+	}
+}
 
 * {
 	margin: 0;
 	padding: 0;
-	font-family: 'Merriweather', serif;
-	font-size: 14px;
+	background-color: var(--background);
+	color: var(--text);
+	font-family: monospace;
 }
 
-html {
-	padding-top: 2em;
-	background: var(--background) no-repeat fixed;
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+	font-size: 100%;
 }
 
 body {
-	width: 850px;
-	margin: auto;
-	padding: 2em;
-	padding-bottom: 4em;
-	background-color: var(--page-light);
-	color: var(--text);
+	margin: auto 25%;
+}
+
+header {
+	margin-top: 15px;
+}
+
+header h1 {
+	font-size: 250%;
+	margin-bottom: 10px;
+	text-transform: lowercase;
+}
+
+header p {
+	font-size: 90%;
+	font-style: italic;
+	text-transform: lowercase;
+}
+
+nav ul, footer ul {
+	width: 100%;
+	margin: 10px auto;
+}
+
+nav ul li, footer ul li {
+	display: inline;
+	padding: 2px;
+}
+
+nav ul li *, footer ul li * {
+	text-decoration: none;
+	text-transform: lowercase;
+}
+
+nav ul li *:hover, footer ul li *:hover {
+	text-decoration: underline;
+}
+
+main {
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+article {
+	margin-left: 15px;
+	margin-bottom: 10px;
+}
+
+main h2, main p {
+	margin-bottom: 10px;
+}
+
+main h2 {
+	font-size: 150%;
+	text-transform: uppercase;
+}
+
+main blockquote {
+	margin-bottom: 10px;
+	line-height: 120%;
+}
+
+blockquote {
+	margin-left: 15px;
+	margin-bottom: 10px;
+}
+
+.invert {
+	background-color: var(--text);
+	color: var(--background);
 }
 
 @media screen and (max-width:992px) {
 	body {
-		width: 80%;
+		margin: auto 20%;
 	}
 }
 
 @media screen and (max-width:600px) {
 	body {
-		width: 100%;
+		margin: auto 0%;
 	}
-}
-
-h1, h2, p {
-	margin: 0.5em 0em 0.5em 0em;
-} 
-
-nav a, footer a {
-	margin: 0.5em 0.5em 0.5em 0em;
-}
-
-a:link {
-	color: var(--link-light);
-}
-
-a:visited {
-	color: var(--link-dark);
-}
-
-p {
-	line-height: 1.5em;
-	margin-bottom: 1.75em;
-}
-
-blockquote {
-	margin-left: 2em;
-	margin-bottom: 2em;
-	font-family: 'IBM Plex Mono', monospace;
-	color: var(--highlight);
-}
-
-header h1 {
-	font-size: 3em;
-	font-family: 'Baumans', cursive;
-	margin-left: 0;
-}
-
-header p {
-	font-size: 1.25em;
-}
-
-nav li, footer li {
-	display: inline;
-}
-
-article {
-	width: fill;
-	margin: 1em;
-	padding: 1em;
-	background: var(--page-gray) no-repeat fixed;
-	border-radius: 8px;
-}
-
-article p {
-	margin-bottom: 0.5em;
 }
