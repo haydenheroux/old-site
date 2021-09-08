@@ -107,5 +107,22 @@ blockquote {
 @media screen and (max-width:600px) {
 	body {
 		margin: auto 0%;
+		font-size: 200%;
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		font-size: 200%;
+	}
+
+	main h2 {
+		font-size: 300%;
+	}
+
+	header h1 {
+		font-size: 500%;
+	}
+
+	header p {
+		font-size: 180%;
 	}
 }
