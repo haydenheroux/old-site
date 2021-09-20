@@ -4,10 +4,8 @@
 <title>
 musicdb
 </title>
-<link rel="icon" type="image/jpg" href="haydensmall.jpg">
-<style type="text/css">
-@import url(styles.css);
-</style>
+<link rel="icon" type="image/jpg" href="/static/img/haydensmall.jpg">
+<link rel="stylesheet" type="text/css" href="static/css/styles.css">
 </head>
 <body>
 <header>
@@ -46,7 +44,7 @@ cd $filepath<br/>
 File Format
 </h2>
 <p>
-The file format used by the download script requires that the YouTube video ID is in the column, and all consecutive fields are stored in tab-separated columns. The largest storage file (<a href="music.db">music.db</a>) is formed by concatenating many smaller (.olst) files, the process of creating whch is described below.
+The file format used by the download script requires that the YouTube video ID is in the column, and all consecutive fields are stored in tab-separated columns. The largest storage file (<a href="static/misc/music.db">music.db</a>) is formed by concatenating many smaller (.olst) files, the process of creating whch is described below.
 </p>
 <p>
 Using the previous file format (a list of YouTube URLS, separated by newlines), use Vim or another capable text editor to isolate the ID part of the URL. In Vim, a command sequence such as "$10hd0" can be used. The longer lists in my library required the use of a macro, which was recorded on the first line, and applied to the remaining lines with "jVG:normal @q" where q was the name macro of the previous command. Writing this buffer, followed by using the paste utlity to merge the file with the ID list and a list of the files in each directory (ls -x1 | paste tmp.ulst &amp; tmp.olst) produces a file with an ID column and a file column, separated by tabs. The process of adding fields can be replicated with the previous command, substituting ls -x1 with a command of your choice.
