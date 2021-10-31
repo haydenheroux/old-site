@@ -93,7 +93,7 @@ blockquote {
 	margin-bottom: 10px;
 }
 
-.invert {
+a:hover {
 	background-color: var(--text);
 	color: var(--background);
 }
