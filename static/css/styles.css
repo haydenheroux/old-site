@@ -78,6 +78,11 @@ main h2, main p {
 	margin-bottom: 10px;
 }
 
+main article h2 {
+	font-size: 150%;
+	text-transform: uppercase;
+}
+
 main h2 {
 	font-size: 150%;
 	text-transform: uppercase;
@@ -93,7 +98,7 @@ blockquote {
 	margin-bottom: 10px;
 }
 
-a:hover {
+a:hover, a *:hover {
 	background-color: var(--text);
 	color: var(--background);
 }
