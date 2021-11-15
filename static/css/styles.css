@@ -80,7 +80,7 @@ main h2, main p {
 
 main article h2 {
 	font-size: 150%;
-	text-transform: uppercase;
+	text-transform: lowercase;
 }
 
 main h2 {
