@@ -23,7 +23,7 @@ h1 {
 # Presentation Editor
 Authored by:
 ` Hayden Heroux
-@ https://github.com/Hayden977
+@ https://github.com/haydenheroux
 
 _ Go to the next slide with the "Next Slide" button!
 
@@ -39,8 +39,8 @@ _ Italic
 * Bold
 ` ` Code
 ` Code
-@ https://github.com/Hayden977
-` @ https://github.com/Hayden977
+@ https://github.com/haydenheroux
+` @ https://github.com/haydenheroux
 - 
 A "-" (dash character) produces a horizontal rule
 
@@ -71,14 +71,32 @@ Previous Slide
 Next Slide
 </button>
 </div>
-<div id="slidearea">
+<div id="slidearea" style="float: left;">
 </div>
 <script>
 var slides;
 var current = 0;
 var slidecount = 0;
+var original = [60, 100]; // Rows, columns
+
+function toggle() {
+	var input = document.getElementById("input");
+	var rows = input.rows;
+	var cols = input.cols;
+	if (rows != original[0]) {
+		input.rows = original[0];
+	} else {
+		input.rows = 0;
+	}
+	if (cols != original[1]) {
+		input.cols = original[1];
+	} else {
+		input.cols = 0;
+	}
+}
 
 function compile() {
+	toggle();
 	slides = [""];
 	var lines = document.getElementById("input").value.split("\n");
 	slidecount = 0;
