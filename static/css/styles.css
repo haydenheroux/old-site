@@ -137,6 +137,7 @@ a:hover, a *:hover {
 	}
 
 	main h2 {
+		margin-top: 40px;
 		font-size: 125%;
 	}
 
