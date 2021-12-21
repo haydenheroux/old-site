@@ -92,7 +92,7 @@ Once all command line arguments have been processed and flags have been set, the
 		}<br/>
 </blockquote>
 <p>
-When comparing this iteration of the hasm project to the blockquotevious iteration, interfacing with the IO streams is much more streamlined. Standard streams are the default method of communication between the program and the outside world, and offers "script-able" functionality through piping (see below example). Files and user input are treated exactly the same after the contents of the file are processed, and command-line arguments are the only way to interact with the program's contents, disregarding the internal memory setup. 
+When comparing this iteration of the hasm project to the previous iteration, interfacing with the IO streams is much more streamlined. Standard streams are the default method of communication between the program and the outside world, and offers "script-able" functionality through piping (see below example). Files and user input are treated exactly the same after the contents of the file are processed, and command-line arguments are the only way to interact with the program's contents, disregarding the internal memory setup. 
 </p>
 <blockquote>
 bin $ cat hello.hasm | ./hasm -l &#62; hello.txt<br/>
