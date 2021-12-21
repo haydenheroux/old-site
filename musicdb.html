@@ -140,6 +140,23 @@ done < "$FILE"<br/>
 rm *."$FORMAT"<br/>
 </blockquote>
 <h2>
+Rename Script
+</h2>
+<blockquote>
+ID=$1<br/>
+FILE=`pwd | xargs -I {} find {} -type f | grep -- $ID`<br/>
+ARTIST=`pwd | sed "s:.*/::" | xargs -I {} grep -e $ID /home/hayden/media/music/{}.ls | awk -F'\t' '{print $2}' | tr '[:upper:]' '[:lower:]' | tr -d '&amp;' | tr -d '-' | tr -d "'"| tr ' ' '+' | sed 's/++/:/g' | sed 's/+/_/g' | sed 's/:/+/g'`<br/>
+TITLE=`pwd | sed "s:.*/::" | xargs -I {} grep -e $ID /home/hayden/media/music/{}.ls | awk -F'\t' '{print $3}' | tr '[:upper:]' '[:lower:]' | tr -d '(' | tr -d ')' | tr -d '.' | tr -d "'" | tr ' ' '+' | sed 's/++/:/g' | sed 's/+/_/g' | sed 's/:/+/g'`<br/>
+<br/>
+printf "$FILE\n"<br/>
+printf "$ARTIST\n"<br/>
+printf "$TITLE\n"<br/>
+<br/>
+read<br/>
+<br/>
+mv -i $FILE "$ARTIST-$TITLE"<br/>
+</blockquote>
+<h2>
 Revisions and To-Do
 </h2>
 <p>
