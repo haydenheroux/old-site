@@ -73,19 +73,19 @@ LSFILE="$DIR/.ls"<br/>
 <br/>
 if [ ! -f "$LSFILE" ]<br/>
 then<br/>
-	printf "Creating listfile $LSFILE\n"<br/>
-	touch "$LSFILE"<br/>
+&nbsp;printf "Creating listfile $LSFILE\n"<br/>
+&nbsp;touch "$LSFILE"<br/>
 fi<br/>
 while read -r line<br/>
 do<br/>
-	ID=$(printf "$line" | awk '{print $1}')<br/>
-	MATCHES=$(grep "$ID" "$LSFILE")<br/>
-	if [ -z "$MATCHES" ]<br/>
-	then<br/>
-		printf "Did not find match for $ID\n"<br/>
-	else<br/>
-		printf "Found match for $ID\n"<br/>
-	fi<br/>
+&nbsp;ID=$(printf "$line" | awk '{print $1}')<br/>
+&nbsp;MATCHES=$(grep "$ID" "$LSFILE")<br/>
+&nbsp;if [ -z "$MATCHES" ]<br/>
+&nbsp;then<br/>
+&nbsp;&nbsp;printf "Did not find match for $ID\n"<br/>
+&nbsp;else<br/>
+&nbsp;&nbsp;printf "Found match for $ID\n"<br/>
+&nbsp;fi<br/>
 done < "$FILE"<br/>
 <br/>
 rm *."$FORMAT"<br/>
@@ -106,7 +106,7 @@ printf "$ID" | xargs grep -r -- | cut -d'.' -f1 | awk '/music/{0; next} NF' | xa
 Rename Output File
 </h2>
 <blockquote>
-cd $DIR && ../rename.sh $ID && cd .. && printf "$ID\n" >> "$LSFILE"<br/>
+cd $DIR &amp; ../rename.sh $ID &amp; cd .. &amp; printf "$ID\n" &gt;&gt; "$LSFILE"<br/>
 </blockquote>
 <h2>
 Bringing it All Together
@@ -120,21 +120,21 @@ LSFILE="$DIR/.ls"<br/>
 <br/>
 if [ ! -f "$LSFILE" ]<br/>
 then<br/>
-	printf "Creating listfile $LSFILE\n"<br/>
-	touch "$LSFILE"<br/>
+&nbsp;printf "Creating listfile $LSFILE\n"<br/>
+&nbsp;touch "$LSFILE"<br/>
 fi<br/>
 <br/>
 while read -r line<br/>
 do<br/>
-	ID=$(printf "$line" | awk '{print $1}')<br/>
-	MATCHES=$(grep "$ID" "$LSFILE")<br/>
-	if [ -z "$MATCHES" ]<br/>
-	then<br/> 
-		printf "Did not find match for $ID\n"<br/>
-		yt-dlp --extract-audio --audio-format "$FORMAT" --restrict-filenames --age-limit 100 -R infinite https://www.youtube.com/watch?v="$ID" && printf "$ID" | xargs grep -r -- | cut -d'.' -f1 | awk '/music/{0; next} NF' | xargs -I {} cp -t {} *."$FORMAT" && cd $DIR && ../rename.sh $ID && cd .. && printf "$ID\n" >> "$LSFILE"<br/>
-	else<br/>
-		printf "Found match for $ID\n"<br/>
-	fi<br/>
+&nbsp;ID=$(printf "$line" | awk '{print $1}')<br/>
+&nbsp;MATCHES=$(grep "$ID" "$LSFILE")<br/>
+&nbsp;if [ -z "$MATCHES" ]<br/>
+&nbsp;then<br/> 
+&nbsp;&nbsp;printf "Did not find match for $ID\n"<br/>
+&nbsp;&nbsp;yt-dlp --extract-audio --audio-format "$FORMAT" --restrict-filenames --age-limit 100 -R infinite https://www.youtube.com/watch?v="$ID" &amp; printf "$ID" | xargs grep -r -- | cut -d'.' -f1 | awk '/music/{0; next} NF' | xargs -I {} cp -t {} *."$FORMAT" &amp; cd $DIR &amp; ../rename.sh $ID &amp; cd .. &amp; printf "$ID\n" &gt;&gt; "$LSFILE"<br/>
+&nbsp;else<br/>
+&nbsp;&nbsp;printf "Found match for $ID\n"<br/>
+&nbsp;fi<br/>
 done < "$FILE"<br/>
 <br/>
 rm *."$FORMAT"<br/>
