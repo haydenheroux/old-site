@@ -33,9 +33,9 @@ Motivation
 <p>
 Previously, my music library was managed by many files being mapped to many directories. A list of YouTube urls (*.ls) and youtube-dl's batchfile argument were used to download large libraries of music. The download script was very simple (see below), since youtube-dl was handling the for line in file structure for me. However, the process was entirely dependent on youtube-dl, which exits on any error (yes, even with -i passed). As a result, management of my music library was to be handled by my own script, which offers more control, being able to read my own formats and process my own file structure.
 </p>
-<p>
+<h3>
 Version One
-</p>
+</h3>
 <blockquote>
 filepath=`cd ~/music/ &amp;&amp; ls -dx1 */ | dmenu`<br/>
 filetype=`echo -e "mp3\nwav\nvorbis" | dmenu`<br/>
@@ -43,9 +43,9 @@ listfile="${filepath%?}.ls"<br/>
 cd $filepath<br/>
 /usr/local/bin/youtube-dl --batch-file "~/music/$listfile" --extract-audio --audio-format $filetype --restrict-filenames<br/>
 </blockquote>
-<p>
+<h3>
 Version Two
-</p>
+</h3>
 <blockquote>
 #!/bin/bash<br/>
 FORMAT="mp3"<br/>
