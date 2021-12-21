@@ -38,7 +38,7 @@ header {
 }
 
 header h1 {
-	font-size: 250%;
+	font-size: 200%;
 	margin-bottom: 10px;
 	text-transform: lowercase;
 }
@@ -83,12 +83,12 @@ main h2, main p, main img, main li {
 }
 
 main article h2 {
-	font-size: 150%;
+	font-size: 125%;
 	text-transform: lowercase;
 }
 
 main h2 {
-	font-size: 150%;
+	font-size: 125%;
 	text-transform: uppercase;
 }
 
@@ -122,25 +122,30 @@ a:hover, a *:hover {
 }
 
 @media screen and (max-width:600px) {
+
+	html {
+		margin: 10% 10%;
+	}
+
 	body {
 		margin: auto 0%;
-		font-size: 200%;
+		font-size: 125%;
 	}
 
 	h1, h2, h3, h4, h5, h6 {
-		font-size: 200%;
+		font-size: 125%;
 	}
 
 	main h2 {
-		font-size: 300%;
+		font-size: 125%;
 	}
 
 	header h1 {
-		font-size: 500%;
+		font-size: 175%;
 	}
 
 	header p {
-		font-size: 180%;
+		font-size: 125%;
 	}
 
 	img {
