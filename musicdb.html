@@ -33,12 +33,24 @@ Motivation
 <p>
 Previously, my music library was managed by many files being mapped to many directories. A list of YouTube urls (*.ls) and youtube-dl's batchfile argument were used to download large libraries of music. The download script was very simple (see below), since youtube-dl was handling the for line in file structure for me. However, the process was entirely dependent on youtube-dl, which exits on any error (yes, even with -i passed). As a result, management of my music library was to be handled by my own script, which offers more control, being able to read my own formats and process my own file structure.
 </p>
+<p>
+Version One
+</p>
 <blockquote>
 filepath=`cd ~/music/ &amp;&amp; ls -dx1 */ | dmenu`<br/>
 filetype=`echo -e "mp3\nwav\nvorbis" | dmenu`<br/>
 listfile="${filepath%?}.ls"<br/>
 cd $filepath<br/>
 /usr/local/bin/youtube-dl --batch-file "~/music/$listfile" --extract-audio --audio-format $filetype --restrict-filenames<br/>
+</blockquote>
+<p>
+Version Two
+</p>
+<blockquote>
+#!/bin/bash<br/>
+FORMAT="mp3"<br/>
+FILE="music.db"<br/>
+while read -r line; do ID=$(printf "$line" | awk '{print $1}'); /usr/local/bin/youtube-dl --extract-audio --audio-format $FORMAT --restrict-filenames https://www.youtube.com/watch?v="$ID" &amp;&amp; grep -e "$ID" "$FILE" | awk '{print $1}' | xargs grep -r | cut -d'.' -f1 | awk '/music/{0; next} NF' | xargs mv *."$FORMAT"; done &#60; $FILE<br/>
 </blockquote>
 <h2>
 File Format
@@ -53,30 +65,79 @@ Using the previous file format (a list of YouTube URLS, separated by newlines), 
 Structure and Variables
 </h2>
 <blockquote>
-FORMAT="mp3"<br/>
-FILE="music.db"<br/>
-while read -r line; do ID=$(printf "$line" | awk '{print $1}'); done &#60; $FILE<br/>
+#!/bin/bash<br/>
+FILE=$1<br/>
+FORMAT=$2<br/>
+DIR=$(printf "$FILE" | awk -F . '{print $1}')<br/>
+LSFILE="$DIR/.ls"<br/>
+<br/>
+if [ ! -f "$LSFILE" ]<br/>
+then<br/>
+	printf "Creating listfile $LSFILE\n"<br/>
+	touch "$LSFILE"<br/>
+fi<br/>
+while read -r line<br/>
+do<br/>
+	ID=$(printf "$line" | awk '{print $1}')<br/>
+	MATCHES=$(grep "$ID" "$LSFILE")<br/>
+	if [ -z "$MATCHES" ]<br/>
+	then<br/>
+		printf "Did not find match for $ID\n"<br/>
+	else<br/>
+		printf "Found match for $ID\n"<br/>
+	fi<br/>
+done < "$FILE"<br/>
+<br/>
+rm *."$FORMAT"<br/>
 </blockquote>
 <h2>
 Using youtube-dl for Download
 </h2>
 <blockquote>
-youtube-dl --extract-audio --audio-format $FORMAT --restrict-filenames https://youtube.com/watch?v="$ID"<br/>
+yt-dlp --extract-audio --audio-format "$FORMAT" --restrict-filenames --age-limit 100 -R infinite https://www.youtube.com/watch?v="$ID"<br/>
 </blockquote>
 <h2>
 Finding Output Folder from Identifier
 </h2>
 <blockquote>
-grep "$ID" "$FILE" | awk '{print $1}' | xargs grep -r | cut -d'.' -f1 | awk '/music/{0; next} NF'<br/>
+printf "$ID" | xargs grep -r -- | cut -d'.' -f1 | awk '/music/{0; next} NF' | xargs -I {} cp -t {} *."$FORMAT"<br/> 
+</blockquote>
+<h2>
+Rename Output File
+</h2>
+<blockquote>
+cd $DIR && ../rename.sh $ID && cd .. && printf "$ID\n" >> "$LSFILE"<br/>
 </blockquote>
 <h2>
 Bringing it All Together
 </h2>
 <blockquote>
 #!/bin/bash<br/>
-FORMAT="mp3"<br/>
-FILE="music.db"<br/>
-while read -r line; do ID=$(printf "$line" | awk '{print $1}'); /usr/local/bin/youtube-dl --extract-audio --audio-format $FORMAT --restrict-filenames https://www.youtube.com/watch?v="$ID" &amp;&amp; grep -e "$ID" "$FILE" | awk '{print $1}' | xargs grep -r | cut -d'.' -f1 | awk '/music/{0; next} NF' | xargs mv *."$FORMAT"; done &#60; $FILE<br/>
+FILE=$1<br/>
+FORMAT=$2<br/>
+DIR=$(printf "$FILE" | awk -F . '{print $1}')<br/>
+LSFILE="$DIR/.ls"<br/>
+<br/>
+if [ ! -f "$LSFILE" ]<br/>
+then<br/>
+	printf "Creating listfile $LSFILE\n"<br/>
+	touch "$LSFILE"<br/>
+fi<br/>
+<br/>
+while read -r line<br/>
+do<br/>
+	ID=$(printf "$line" | awk '{print $1}')<br/>
+	MATCHES=$(grep "$ID" "$LSFILE")<br/>
+	if [ -z "$MATCHES" ]<br/>
+	then<br/> 
+		printf "Did not find match for $ID\n"<br/>
+		yt-dlp --extract-audio --audio-format "$FORMAT" --restrict-filenames --age-limit 100 -R infinite https://www.youtube.com/watch?v="$ID" && printf "$ID" | xargs grep -r -- | cut -d'.' -f1 | awk '/music/{0; next} NF' | xargs -I {} cp -t {} *."$FORMAT" && cd $DIR && ../rename.sh $ID && cd .. && printf "$ID\n" >> "$LSFILE"<br/>
+	else<br/>
+		printf "Found match for $ID\n"<br/>
+	fi<br/>
+done < "$FILE"<br/>
+<br/>
+rm *."$FORMAT"<br/>
 </blockquote>
 <h2>
 Revisions and To-Do
