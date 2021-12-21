@@ -17,12 +17,16 @@
 	padding: 0;
 	background-color: var(--background);
 	color: var(--text);
-	font-family: monospace;
+	font-family: sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
 	font-weight: normal;
 	font-size: 100%;
+}
+
+img {
+	width: 640px;
 }
 
 body {
@@ -74,7 +78,7 @@ article {
 	margin-bottom: 10px;
 }
 
-main h2, main p {
+main h2, main p, main img, main li {
 	margin-bottom: 10px;
 }
 
@@ -88,14 +92,18 @@ main h2 {
 	text-transform: uppercase;
 }
 
-main blockquote {
+main blockquote, main li {
 	margin-bottom: 10px;
+	font-family: monospace;
 	line-height: 120%;
 }
 
-blockquote {
+main blockquote {
 	margin-left: 15px;
-	margin-bottom: 10px;
+}
+
+main li {
+	list-style-type: none;
 }
 
 a:hover, a *:hover {
@@ -106,6 +114,10 @@ a:hover, a *:hover {
 @media screen and (max-width:992px) {
 	body {
 		margin: auto 20%;
+	}
+
+	img {
+		width: 480px;
 	}
 }
 
@@ -129,5 +141,9 @@ a:hover, a *:hover {
 
 	header p {
 		font-size: 180%;
+	}
+
+	img {
+		width: 480px;
 	}
 }
