@@ -64,3 +64,12 @@ nav ul li, footer ul li {
 header h1, article h2 a, nav ul li a, nav ul li a b, footer ul li a, footer ul li a b {
 	font-size: clamp(2vmin, 3rem, 4vmin);
 }
+
+/* "Desktop" (widescreen) */
+
+@media only screen and (min-width: 1280px) {
+	html {
+		margin-left: 30%;
+		margin-right: 30%;
+	}
+}
