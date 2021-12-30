@@ -71,6 +71,12 @@ header p {
 	margin-bottom: clamp(20px, 1vw, 40px);
 }
 
+main {
+	margin: clamp(20px, 1vw, 40px);
+	margin-top: clamp(60px, 2vw, 160px);
+	margin-bottom: clamp(60px, 2vw, 160px);
+}
+
 main article {
 	margin: clamp(20px, 2vw, 80px);
 	margin-bottom: clamp(60px, 2vw, 160px);
