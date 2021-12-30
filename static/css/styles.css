@@ -23,8 +23,9 @@ a {
 	text-decoration: none;
 }
 
-a:hover {
-	text-decoration: underline;
+a:hover, a *:hover {
+	background-color: var(--text);
+	color: var(--background);
 }
 
 h1, h2, h3, h4, h5, h6, nav ul li a, footer ul li a {
