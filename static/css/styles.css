@@ -68,8 +68,22 @@ header h1, article h2 a, nav ul li a, nav ul li a b, footer ul li a, footer ul l
 /* "Desktop" (widescreen) */
 
 @media only screen and (min-width: 1280px) {
+
+	* {
+		font-size: 2vmin;
+	}
+
 	html {
 		margin-left: 30%;
 		margin-right: 30%;
 	}
+
+	nav ul li, footer ul li {
+		margin-right: 1vmin;
+	}
+
+	header h1, article h2 a, nav ul li a, nav ul li a b, footer ul li a, footer ul li a b {
+		font-size: 3vmin;
+	}
+
 }
