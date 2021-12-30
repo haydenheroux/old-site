@@ -6,3 +6,22 @@
 html {
 	margin: 10%;
 }
+
+nav, footer {
+	overflow: hidden;
+}
+
+nav ul, footer ul {
+	display: block;
+	list-style-type: none;
+	padding: 0;
+}
+
+nav ul li, footer ul li {
+	float: left;
+}
+
+nav ul li, footer ul li {
+	display: block;
+	padding: 1vw 1vw 1vw 0vw;
+}
