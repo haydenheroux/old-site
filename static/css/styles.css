@@ -82,6 +82,11 @@ main article {
 	margin-bottom: clamp(60px, 2vw, 160px);
 }
 
+main blockquote {
+	font-family: monospace;
+	line-height: 120%;
+}
+
 /* "Desktop" (widescreen) */
 
 @media only screen and (min-width: 1280px) {
