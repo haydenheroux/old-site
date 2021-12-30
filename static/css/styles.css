@@ -65,6 +65,13 @@ header h1, article h2 a, nav ul li a, nav ul li a b, footer ul li a, footer ul l
 	font-size: clamp(2vmin, 3rem, 4vmin);
 }
 
+/* Readability */
+
+main article {
+	margin: clamp(20px, 2vw, 80px);
+	margin-bottom: clamp(60px, 2vw, 160px);
+}
+
 /* "Desktop" (widescreen) */
 
 @media only screen and (min-width: 1280px) {
