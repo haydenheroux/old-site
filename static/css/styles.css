@@ -3,9 +3,24 @@
 	font-size: clamp(2vmin, 2rem, 3vmin);
 }
 
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+h1, h2, h3, h4, h5, h6, nav ul li a, footer ul li a {
+	font-weight: normal;
+	text-transform: lowercase;
+}
+
 html {
 	margin: 10%;
 }
+
+/* Navigation bar */
 
 nav, footer {
 	overflow: hidden;
