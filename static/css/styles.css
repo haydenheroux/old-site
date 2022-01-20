@@ -14,3 +14,27 @@ header, nav, main, article {
 p, blockquote, img {
 	margin-bottom: max(1.5em, 20px);
 }
+
+/* Navigation styling */
+
+nav ul, footer ul {
+	list-style-type: none;
+	overflow: hidden;
+}
+
+nav li, footer li {
+	float: left;
+	padding-right: 1em;
+}
+
+/* Link styling */
+
+a {
+	color: black;
+	text-decoration: none;
+}
+
+a:hover {
+	background-color: black;
+	color: white;
+}
