@@ -1,132 +1,16 @@
-@media (prefers-color-scheme: dark) {
-	:root {
-		--background: #181a1b;
-		--text: #fefefe;
-	}
-}
-
-@media (prefers-color-scheme: light) {
-	:root {
-		--background: #fefefe;
-		--text: #181a1b;
-	}
-}
-
 * {
-	font-family: sans-serif;
-	font-size: clamp(2vmin, 2rem, 3vmin);
-	background-color: var(--background);
-	color: var(--text);
-}
-
-a {
-	text-decoration: none;
-}
-
-a:hover,
-a *:hover {
-	background-color: var(--text);
-	color: var(--background);
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-nav ul li a,
-footer ul li a {
-	font-weight: normal;
-	text-transform: lowercase;
-}
-
-html {
-	margin: 10%;
-}
-
-/* Navigation bar */
-
-nav,
-footer {
-	overflow: hidden;
-}
-
-nav ul,
-footer ul {
-	display: block;
-	list-style-type: none;
+	margin: 0;
 	padding: 0;
 }
 
-nav ul li,
-footer ul li {
-	float: left;
+/* Layout elements must be distinguishable from eachother */
+
+header, nav, main, article {
+	margin-bottom: max(2em, 40px);
 }
 
-nav ul li,
-footer ul li {
-	display: block;
-	margin-right: clamp(20px, 2vw, 80px);
-	margin-left: 0;
-}
+/* Text elements must have signifigant space between them for ease of reading */
 
-/* "Important" elements */
-
-header h1,
-article h2 a,
-nav ul li a,
-nav ul li a b,
-footer ul li a,
-footer ul li a b {
-	font-size: clamp(2vmin, 3rem, 4vmin);
-}
-
-/* Readability */
-
-header p {
-	margin-bottom: clamp(20px, 1vw, 40px);
-}
-
-main {
-	margin: clamp(20px, 1vw, 40px);
-	margin-top: clamp(60px, 2vw, 160px);
-	margin-bottom: clamp(60px, 2vw, 160px);
-}
-
-main article {
-	margin: clamp(20px, 2vw, 80px);
-	margin-bottom: clamp(60px, 2vw, 160px);
-}
-
-main blockquote {
-	font-family: monospace;
-	line-height: 120%;
-}
-
-/* "Desktop" (widescreen) */
-
-@media only screen and (min-width: 1280px) {
-	* {
-		font-size: 2vmin;
-	}
-
-	html {
-		margin-left: 30%;
-		margin-right: 30%;
-	}
-
-	nav ul li,
-	footer ul li {
-		margin-right: 1vmin;
-	}
-
-	header h1,
-	article h2 a,
-	nav ul li a,
-	nav ul li a b,
-	footer ul li a,
-	footer ul li a b {
-		font-size: 3vmin;
-	}
+p, blockquote, img {
+	margin-bottom: max(1.5em, 20px);
 }
