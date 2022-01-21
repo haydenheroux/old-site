@@ -3,6 +3,12 @@
 	padding: 0;
 }
 
+/* Align content to center */
+
+html {
+	margin: 10%;
+}
+
 /* Layout elements must be distinguishable from eachother */
 
 header, nav, main, article {
@@ -11,7 +17,7 @@ header, nav, main, article {
 
 /* Text elements must have signifigant space between them for ease of reading */
 
-p, blockquote, img {
+p, blockquote, img, main ul {
 	margin-bottom: max(1.5em, 20px);
 }
 
@@ -25,16 +31,28 @@ nav ul, footer ul {
 nav li, footer li {
 	float: left;
 	padding-right: 1em;
+	text-transform: lowercase;
 }
 
 /* Link styling */
 
 a {
+	outline: none;
 	color: black;
 	text-decoration: none;
+	border-bottom: 1px solid;
+	padding: 2px 1px 0;
 }
 
 a:hover {
 	background-color: black;
 	color: white;
+}
+
+header {
+	text-transform: lowercase;
+}
+
+article * {
+	margin-bottom: min(1em, 10px); /* limit to 16px */
 }
