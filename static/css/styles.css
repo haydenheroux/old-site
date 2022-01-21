@@ -55,12 +55,16 @@ main {
 }
 
 article * {
-	margin-bottom: min(1em, 10px); /* limit to 16px */
+	margin-bottom: min(1em, 10px); /* limit to 10px */
 }
 
 main h1, main h2, main h3, main h4, main h5, main h6 {
-	margin-bottom: min(1em, 10px); /* limit to 16px */
+	margin-bottom: min(1em, 10px); /* limit to 10px */
 	text-transform: lowercase;
+}
+
+main ul {
+	padding-left: 2em;
 }
 
 blockquote {
