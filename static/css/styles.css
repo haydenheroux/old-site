@@ -5,10 +5,9 @@
 	font-family: sans-serif;
 }
 
-/* Align content to center */
-
 html {
 	margin: 10%;
+	font-size: min(2vmax, 24px);
 }
 
 /* Layout elements must be distinguishable from eachother */
@@ -46,6 +45,8 @@ a:hover {
 	color: white;
 }
 
+/* Style individual elements */
+
 header {
 	text-transform: lowercase;
 }
@@ -70,4 +71,28 @@ main ul {
 blockquote {
 	font-family: monospace;
 	line-height: 120%;
+}
+
+h1 {
+	font-size: 2em;
+}
+
+h2 {
+	font-size: 1.6em;
+}
+
+h3 {
+	font-size: 1.4em;
+}
+
+h4 {
+	font-size: 1.3em;
+}
+
+h5 {
+	font-size: 1.15em;
+}
+
+h6 {
+	font-size: 1.075em;
 }
