@@ -1,6 +1,8 @@
 * {
 	margin: 0;
 	padding: 0;
+	font-weight: normal;
+	font-family: sans-serif;
 }
 
 /* Align content to center */
@@ -23,13 +25,8 @@ p, blockquote, img, main ul {
 
 /* Navigation styling */
 
-nav ul, footer ul {
-	list-style-type: none;
-	overflow: hidden;
-}
-
 nav li, footer li {
-	float: left;
+	display: inline;
 	padding-right: 1em;
 	text-transform: lowercase;
 }
@@ -53,6 +50,20 @@ header {
 	text-transform: lowercase;
 }
 
+main {
+	margin-left: min(5vw, 20px); /* limit to 20px */
+}
+
 article * {
 	margin-bottom: min(1em, 10px); /* limit to 16px */
+}
+
+main h1, main h2, main h3, main h4, main h5, main h6 {
+	margin-bottom: min(1em, 10px); /* limit to 16px */
+	text-transform: lowercase;
+}
+
+blockquote {
+	font-family: monospace;
+	line-height: 120%;
 }
