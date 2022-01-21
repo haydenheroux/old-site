@@ -51,6 +51,10 @@ header {
 	text-transform: lowercase;
 }
 
+footer {
+	margin-bottom: 10em;
+}
+
 main {
 	margin-left: min(5vw, 20px); /* limit to 20px */
 }
