@@ -20,7 +20,7 @@ header, nav, main, article {
 
 /* Text elements must have signifigant space between them for ease of reading */
 
-p, blockquote, figcaption, main ul {
+p, code, figcaption, main ul {
 	margin-bottom: max(1.5em, 20px);
 }
 
@@ -74,7 +74,7 @@ main ul {
 	padding-left: 2em;
 }
 
-blockquote {
+code {
 	font-family: monospace;
 	line-height: 150%;
 	font-size: 0.925em;

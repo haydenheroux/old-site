@@ -37,13 +37,13 @@ Previously, my music library was managed by many files being mapped to many dire
 Version One
 </h3>
 <figure>
-<blockquote>
+<code>
 filepath=`cd ~/music/ &amp;&amp; ls -dx1 */ | dmenu`<br/>
 filetype=`echo -e "mp3\nwav\nvorbis" | dmenu`<br/>
 listfile="${filepath%?}.ls"<br/>
 cd $filepath<br/>
 /usr/local/bin/youtube-dl --batch-file "~/music/$listfile" --extract-audio --audio-format $filetype --restrict-filenames<br/>
-</blockquote>
+</code>
 <figcaption>
 youtube-dl downloads all URLs in the file selected by dmenu.
 </figure>
@@ -51,12 +51,12 @@ youtube-dl downloads all URLs in the file selected by dmenu.
 Version Two
 </h3>
 <figure>
-<blockquote>
+<code>
 #!/bin/bash<br/>
 FORMAT="mp3"<br/>
 FILE="music.db"<br/>
 while read -r line; do ID=$(printf "$line" | awk '{print $1}'); /usr/local/bin/youtube-dl --extract-audio --audio-format $FORMAT --restrict-filenames https://www.youtube.com/watch?v="$ID" &amp;&amp; grep -e "$ID" "$FILE" | awk '{print $1}' | xargs grep -r | cut -d'.' -f1 | awk '/music/{0; next} NF' | xargs mv *."$FORMAT"; done &#60; $FILE<br/>
-</blockquote>
+</code>
 <figcaption>
 Downloading a YouTube URL for each line in a file, then moving the resulting file to output directories.
 </figcaption>
@@ -74,7 +74,7 @@ Using the previous file format (a list of YouTube URLS, separated by newlines), 
 Structure and Variables
 </h2>
 <figure>
-<blockquote>
+<code>
 #!/bin/bash<br/>
 FILE=$1<br/>
 FORMAT=$2<br/>
@@ -99,7 +99,7 @@ do<br/>
 done < "$FILE"<br/>
 <br/>
 rm *."$FORMAT"<br/>
-</blockquote>
+</code>
 <figcaption>
 Set the output directory and create an archive file.
 </figcaption>
@@ -108,9 +108,9 @@ Set the output directory and create an archive file.
 Using youtube-dl for Download
 </h2>
 <figure>
-<blockquote>
+<code>
 yt-dlp --extract-audio --audio-format "$FORMAT" --restrict-filenames --age-limit 100 -R infinite https://www.youtube.com/watch?v="$ID"<br/>
-</blockquote>
+</code>
 <figcaption>
 Download just audio.
 </figcaption>
@@ -119,9 +119,9 @@ Download just audio.
 Finding Output Folder from Identifier
 </h2>
 <figure>
-<blockquote>
+<code>
 printf "$ID" | xargs grep -r -- | cut -d'.' -f1 | awk '/music/{0; next} NF' | xargs -I {} cp -t {} *."$FORMAT"<br/> 
-</blockquote>
+</code>
 <figcaption>
 Locate the output folder.
 </figcaption>
@@ -130,9 +130,9 @@ Locate the output folder.
 Rename Output File
 </h2>
 <figure>
-<blockquote>
+<code>
 cd $DIR &amp; ../rename.sh $ID &amp; cd .. &amp; printf "$ID\n" &gt;&gt; "$LSFILE"<br/>
-</blockquote>
+</code>
 <figcaption>
 Rename the output file.
 </figcaption>
@@ -141,7 +141,7 @@ Rename the output file.
 Bringing it All Together
 </h2>
 <figure>
-<blockquote>
+<code>
 #!/bin/bash<br/>
 FILE=$1<br/>
 FORMAT=$2<br/>
@@ -168,7 +168,7 @@ do<br/>
 done < "$FILE"<br/>
 <br/>
 rm *."$FORMAT"<br/>
-</blockquote>
+</code>
 <figcaption>
 Complete script which downloads each YouTube URL from the specified file.
 </figcaption>
@@ -177,7 +177,7 @@ Complete script which downloads each YouTube URL from the specified file.
 Rename Script
 </h2>
 <figure>
-<blockquote>
+<code>
 ID=$1<br/>
 FILE=`pwd | xargs -I {} find {} -type f | grep -- $ID`<br/>
 ARTIST=`pwd | sed "s:.*/::" | xargs -I {} grep -e $ID /home/hayden/media/music/{}.ls | awk -F'\t' '{print $2}' | tr '[:upper:]' '[:lower:]' | tr -d '&amp;' | tr -d '-' | tr -d "'"| tr ' ' '+' | sed 's/++/:/g' | sed 's/+/_/g' | sed 's/:/+/g'`<br/>
@@ -190,7 +190,7 @@ printf "$TITLE\n"<br/>
 read<br/>
 <br/>
 mv -i $FILE "$ARTIST-$TITLE"<br/>
-</blockquote>
+</code>
 <figcaption>
 Restrict filenames to lower-case only, with delimiters.
 </figcaption>

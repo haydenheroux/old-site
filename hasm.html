@@ -67,7 +67,7 @@ Setup of the C program is handled through a variable length array of command lin
 While the total number of flags and options in the switch-case statement are 12, in reality there are only six variables which can be altered by the user. The first of which determines whether output is written in an editor-friendly or binary manner (-F and -f, respectively). The second set of options (-h and -H) print the help message for the program (see below). The next set of options commands the program to print the final state to the standard output or the next long option (-l and -L, respectively) at the end of execution. Following that, the next set of options controls the size of the internal memory array, doubling (-m) or using the next long option (-M). The next set of options determines where output is written, either to the standard output (-o) or the next long option (-O). Lastly, the size of the internal stack can be varied with the final set of options, either doubling or using the next long input (-s and -S, respectively).
 </p>
 <figure>
-<blockquote>
+<code>
 Usage: ./hasm [ARGS] [LONGS]<br/>
 	-f	 Write contents of memory in a binary (raw) format.<br/>
 	-F	 Write contents of memory in a human-readable format (default).<br/>
@@ -81,7 +81,7 @@ Usage: ./hasm [ARGS] [LONGS]<br/>
 	-O	 Output contents of memory to [the next long option].<br/>
 	-s	 Increase the stack capacity by a factor of two (default: 32*2).<br/>
 	-S	 Increase the stack capacity to [the next long option] elements.<br/>
-</blockquote>
+</code>
 <figcaption>
 Running hasm with the -h option.
 </figcaption>
@@ -90,13 +90,13 @@ Running hasm with the -h option.
 Once all command line arguments have been processed and flags have been set, the internal memory is allocated and arranged. Input is read from the user reapeatedly using a combonation of fgets and sscanf. The command is then converted to an integer for use in a switch-case statement, executing the function provided with the provided arguments. Unless an EOF terminator is sent through the stream (either through Ctrl+D, or the EOF in a piped file), this continues, freeing the internal memory and closing all applicable streams once the program cannot read input. 
 </p>
 <figure>
-<blockquote>
+<code>
 	while(fgets(sline, sizeof(sline), stdin))<br/>
 		{<br/>
 		sscanf(sline, "%s %i %i", scmd, &amp;nsrcaddr, &amp;ndesaddr);<br/>
 		// ...<br/>
 		}<br/>
-</blockquote>
+</code>
 <figcaption>
 Processing standard input in C line-by-line.
 </figcaption>
@@ -105,10 +105,10 @@ Processing standard input in C line-by-line.
 When comparing this iteration of the hasm project to the previous iteration, interfacing with the IO streams is much more streamlined. Standard streams are the default method of communication between the program and the outside world, and offers "script-able" functionality through piping (see below example). Files and user input are treated exactly the same after the contents of the file are processed, and command-line arguments are the only way to interact with the program's contents, disregarding the internal memory setup. 
 </p>
 <figure>
-<blockquote>
+<code>
 bin $ cat hello.hasm | ./hasm -l &#62; hello.txt<br/>
 bin $ less hello.txt<br/>
-</blockquote>
+</code>
 <figcaption>
 Using hasm to compute Hello World.
 </figcaption>
