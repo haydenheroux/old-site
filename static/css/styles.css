@@ -20,7 +20,7 @@ header, nav, main, article {
 
 /* Text elements must have signifigant space between them for ease of reading */
 
-p, blockquote, img, main ul {
+p, blockquote, figcaption, main ul {
 	margin-bottom: max(1.5em, 20px);
 }
 
