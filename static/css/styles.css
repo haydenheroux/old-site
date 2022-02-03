@@ -20,7 +20,7 @@ header, nav, main, article {
 
 /* Text elements must have signifigant space between them for ease of reading */
 
-p, code, figcaption, main ul {
+p, code, img, figcaption, main ul {
 	margin-bottom: max(1.5em, 20px);
 }
 
@@ -75,9 +75,16 @@ main ul {
 }
 
 code {
+	display: block;
 	font-family: monospace;
 	line-height: 150%;
 	font-size: 0.925em;
+}
+
+figure {
+	margin-left: min(5vw, 20px); /* limit to 20px */
+	border-left: 2px solid;
+	padding-left: 2em;
 }
 
 h1 {
