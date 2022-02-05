@@ -1,0 +1,68 @@
+# Inspired by:
+
+[https://www.youtube.com/watch?v=qK0vmuQib8Y]
+mitxela
+[https://www.youtube.com/watch?v=yOyaJXpAYZQ]
+Ben Eater
+[https://www.youtube.com/watch?v=seM9SqTsRG4]
+David Murray ("The 8-Bit Guy")
+[https://www.youtube.com/watch?v=6avJHaC3C2U]
+Dylan Beattie
+
+# Python Implementation
+
+The hasm project was designed in January 2020 as a Python implementation of an extremely basic processor. The features of the final implementation included a 16 address-wide memory space, a separate memory space for stack memory, 17 executable instructions, and separate program memory. The implementation did not have a set design goal, and rather served as a experimental platform as I was learning how physical computers functioned. Evidently, the final implementation is far disconnected from the structure of a physical computer, e.g. the isolation of the primary memory and stack memory, a fixation on hexadecimal programming over a traditional string-to-function and string-to-number conversions, etc.  
+
+My personal views towards the project were very negative; the implementation did not align with my prior knowledge, nor with my research. To this day, the implementation lacks a concrete way to handle jumps, as the structure of the program created a difficult situation around the physical analog. Without a lengthy logic setup that could accurately determine the location of the program counter through "instruction word", the program counter drifted out of sync, rendering the set of computable program to exclusively linear. Additionally, the implementation includes a relatively poor function lookup table, exploiting a Python-specific feature rather than a recognizable switch statement or other baking method.
+
+# C++ Implementation
+
+The C++ implementation of the hasm project ported similar ideas across from the Python implementation, and extended the feature list to include an interface for user input and an output suite. The instruction set was reduced to seven instructions, removing the jump-related instructions. The implementation also includes two macros which are processed along with the basic instruction set, performing program-related tasks rather than executing on the internal memory.
+
+The C++ implementation holds a special place in my heart, as it was my first C++ "project." The flaws of the implementation must be acknowledged, specifically in regards to the project structure. At the time of development (summer 2020), I had moved my development to a Linux setup, which came unequipped with access to a web browser. As such, I resorted to compiling the entire implementation as a single .cpp file, resulting in a large number of lines for a simple implementation. Additionally, the sub-implementation of the execution of instructions was much too complex for the actual behaviour. Outside of these nitpicks, the structure of the implementation was concise, following a setup-then-loop form that I was familiar with from my Processing and p5.js experiences.
+
+One aspect of the program which I reflect upon frequently is the handling of IO, specifically the differentiation between files and the standard output streams. The functions vLog and vReadFile interact with file paths specified by the user, while the rest of the program interacts with the standard input and standard output streams. This is one particular facet of design which, by my opinion, has been improved upon by a large margin. Since this particular implementation, my intent is to refer to file IO abstractly, disregarding the differences between input streams and file streams. 
+
+# C Program
+
+Following the summer of 2020, the hasm project followed a shift in my general thinking about programming. Many of the programs that were installed on my system previously were replaced with suckless-style alternatives (dwm, st, surf). The decision was made to bring the hasm implementation to a minimal, IO stream-based program. Structurally the program aligns closely with the C++ implementation, while using C tools to reduce the complexity and feature set to a minimal amount.
+
+Setup of the C program is handled through a variable length array of command line arguments. A string of characters ("shorts" "flags") and an array of strings ("longs" "paths") are initialized before the program arguments are processed. Starting after the executable name, short arguments (starting with -) are seperated from long arguments (strings that do not start with -) into their respective arrays. Temporary pointers and pointer arithmetic are used to align the constant arguments to the respective point in the array for longs, while shorts are copied into a new string. Once all provided arguments had been parsed, a switch-case chain processes each argument, setting program flags and path variables as provided. 
+
+While the total number of flags and options in the switch-case statement are 12, in reality there are only six variables which can be altered by the user. The first of which determines whether output is written in an editor-friendly or binary manner (-F and -f, respectively). The second set of options (-h and -H) print the help message for the program (see below). The next set of options commands the program to print the final state to the standard output or the next long option (-l and -L, respectively) at the end of execution. Following that, the next set of options controls the size of the internal memory array, doubling (-m) or using the next long option (-M). The next set of options determines where output is written, either to the standard output (-o) or the next long option (-O). Lastly, the size of the internal stack can be varied with the final set of options, either doubling or using the next long input (-s and -S, respectively).
+
+```
+Usage: ./hasm [ARGS] [LONGS]
+	-f	 Write contents of memory in a binary (raw) format.
+	-F	 Write contents of memory in a human-readable format (default).
+	-h	 Display this help message.
+	-H	 Display this help message.
+	-l	 Write the contents of the memory at the end of execution to the default stream (default: stdout).
+	-L	 Write the contents of the memory at the end of execution to [the next long option].
+	-m	 Increase the memory capacity by a factor of two (default: 32*2).
+	-M	 Increase the memory capacity to [the next long option] elements.
+	-o	 Output contents of memory to the default stream (default: stdout).
+	-O	 Output contents of memory to [the next long option].
+	-s	 Increase the stack capacity by a factor of two (default: 32*2).
+	-S	 Increase the stack capacity to [the next long option] elements.
+```
+Running hasm with the -h option.
+
+Once all command line arguments have been processed and flags have been set, the internal memory is allocated and arranged. Input is read from the user reapeatedly using a combonation of fgets and sscanf. The command is then converted to an integer for use in a switch-case statement, executing the function provided with the provided arguments. Unless an EOF terminator is sent through the stream (either through Ctrl+D, or the EOF in a piped file), this continues, freeing the internal memory and closing all applicable streams once the program cannot read input. 
+
+```
+	while(fgets(sline, sizeof(sline), stdin))
+		{
+		sscanf(sline, "%s %i %i", scmd, &amp;nsrcaddr, &amp;ndesaddr);
+		// ...
+		}
+```
+Processing standard input in C line-by-line.
+
+When comparing this iteration of the hasm project to the previous iteration, interfacing with the IO streams is much more streamlined. Standard streams are the default method of communication between the program and the outside world, and offers "script-able" functionality through piping (see below example). Files and user input are treated exactly the same after the contents of the file are processed, and command-line arguments are the only way to interact with the program's contents, disregarding the internal memory setup. 
+
+```
+bin $ cat hello.hasm | ./hasm -l &#62; hello.txt
+bin $ less hello.txt
+```
+Using hasm to compute Hello World.
