@@ -4,7 +4,8 @@ entries:
       - title: "go, python, c++ developer"
       - title: github
         url: https://github.com/haydenheroux/
-      - title: "//TODO: portfolio"
+      - title: résumé
+        url: resume.html
 
   - title: all posts
     post_list:
