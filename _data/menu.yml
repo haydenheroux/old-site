@@ -1,17 +1,24 @@
 entries:
   - title: info
     entries:
-      - title: python, go, c++ programmer
+      - title: "go, python, c++ developer"
       - title: github
-        url: https://github.com/haydenheroux
-      - title: "// TODO: portfolio"
+        url: https://github.com/haydenheroux/
+      - title: "//TODO: portfolio"
 
-  - title: all
+  - title: all posts
     post_list:
       limit: 5
       show_more: true
       show_more_text: See archive...
       show_more_url: archive.html
+
+  - title: linux talk
+    post_list:
+      category: linux
+      show_more: true
+      show_more_text: See more Linux posts...
+      show_more_url: linux-archive.html
 
   - title: rss
     url: feed.xml
