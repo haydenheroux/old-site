@@ -6,6 +6,8 @@ entries:
         url: https://github.com/haydenheroux/
       - title: résumé
         url: resume.html
+      - title: most wanted list
+        url: most-wanted.html
 
   - title: all posts
     post_list:
