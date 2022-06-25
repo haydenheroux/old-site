@@ -67,7 +67,7 @@ miss_k8+angerfist-act_on_impulse-mp3
 5. Delimit JSON values.
 6. Join JSON values and return the final string.
 
-### algorithm, pseudo-Python
+### algorithm, pseudo-python
 
 ```
 """
