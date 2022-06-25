@@ -129,16 +129,19 @@
 				border: 1px solid var(--black);
 				counter-reset: line;
 			}
-			pre, pre span {
+			pre, pre code {
 				background-color: var(--lightgray);
 				font-family: monospace;
 			}
-			pre span:before {
+			pre code:before {
 				display: inline-block;
+				width: var(--margin-medium);
+				margin-left: auto;
 				margin-right: var(--margin-small);
 				padding-left: var(--padding-small);
 				padding-right: var(--padding-small);
 				border-right: 1px solid var(--black);
+				text-align: right;
 				counter-increment: line;
 				content: counter(line);
 			}
@@ -177,13 +180,13 @@
 			<h3 id="conventions_of_this_guide">Conventions of this Guide</h3>
 			<p>Within this guide, text of particular importance is styled so it can be differentiated from normal text. Given that this guide focuses on a programming course, the primary piece of textual information most students will be looking for is code. Code within this guide occurs two forms: firstly, short code segments are displayed on a single line, set in monospace and with a dotted underline. The code statement <samp>print("Hello world!")</samp> should be visually distinct from the rest of this block. On the other hand, long-form segments of code, commonly called "blocks" of code, are shown in a box with a light gray background, set in monospace. Each code block also contains line numbers on the left side of the box, which start at 1 in every new block. There will never be two boxes representing different sections of the same block; each box will always contain the entirety of one block. As blocks of code in their entirety are likely to become the primary reason for using this guide, they should be impossible to miss; see below for an example of a code block.
 <pre>
-<span>#!/usr/bin/env python3</span>
-<span></span>
-<span>def say_hello(name):</span>
-<span>	print(f"Hello {name}!")</span>
-<span></span>
-<span>if __name__ == "__main__":</span>
-<span>	say_hello("Alice")</span>
+<code>#!/usr/bin/env python3</code>
+<code></code>
+<code>def say_hello(name):</code>
+<code>	print(f"Hello {name}!")</code>
+<code></code>
+<code>if __name__ == "__main__":</code>
+<code>	say_hello("Alice")</code>
 </pre>
 			<p>The usage of keyboard shortcuts within the course is essentially mandated. Keyboard shortcuts are shown in a small box with a light gray background, set in monospace. The keyboard shortcut <kbd>Ctrl+S</kbd> represents pressing the <kbd>Ctrl</kbd> and <kbd>S</kbd> keys at the same time. Keyboard keys will always be shown in uppercase regardless of if the <kbd>Shift</kbd> key is pressed. Common keyboard modifiers, such as the control key, the Windows key, the alt key, and the function key are abbreviated <kbd>Ctrl</kbd>, <kbd>Win</kbd>, <kbd>Alt</kbd>, and <kbd>Fn</kbd> respectively. Note than on some computers, the function key inverts the functionality of the top row of keys, rather than activating the secondary keys. If this is the case with the computer you are using, ignore the function key unless it is required to use another keyboard shortcut.</p>
 			<p>The last text styling convention you should be aware of is the styling of vocabulary and other notable text. Notable text is italicized, bolded, and has a dotted underline. The vocabulary word <em>algorithm</em> should show that this styling makes notable text stand out from the rest of this paragraph. In general, all text that is considered notable is styled this way, and all text that is styled this way can be entered into the search box.</p>
