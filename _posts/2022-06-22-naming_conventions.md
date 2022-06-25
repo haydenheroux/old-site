@@ -81,9 +81,11 @@ def to_friendly(value):
         as_string = ELEMENTS_DELIM.join(elements)
     elif value is a string:
         as_string = value
+    elif value is a dict:
+        as_string = to_filename(value)
     # Step 4
     as_string = as_string.lower().replace(" ", "_")
-    return as_string.trim_all_unfriendly()
+    return trim_all_unfriendly(as_string)
 
 """
 Entry point to the algorithm. Steps 1 and 2 should be done before this.
