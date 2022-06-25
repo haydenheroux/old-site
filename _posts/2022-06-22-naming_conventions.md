@@ -82,7 +82,9 @@ def to_friendly(value):
     elif value is a string:
         as_string = value
     elif value is a dict:
-        as_string = to_filename(value)
+        values = [to_friendly(dict_value) for dict_value in value.values()]
+        # Automatically delimits elements per Step 5
+        as_string = ELEMENTS_DELIM.join(values)
     # Step 4
     as_string = as_string.lower().replace(" ", "_")
     return trim_all_unfriendly(as_string)
