@@ -34,7 +34,7 @@ Once the metadata is in JSON format, the next issue which arises is converting t
 {"artists":["Miss K8","Angerfist"],"title":"Act on Impulse","format":"mp3"}
 ```
 
-The condensed version contains some extraneous information, namely the keys from the original JSON data. Assuming that the author of the file name understands some contextual information about the file, such as the possible authors and the possible file formats, the keys can be removed. Additionally, the characters `{": [,]}` do not play nice with command line interaction. The second problem can be solved by removing those pesky characters from the condensed string, which produces the following string if the labels are removed before trimming that character set. Note that ` ` (space) has been replaced with an `_` (underscore), since spaces do delimit words in most human languages, but cause issues at the command line; underscores perform the same function of delimiting words, while also playing nice with the command line.  
+The condensed version contains some extraneous information, namely the keys from the original JSON data. Assuming that the author of the file name understands some contextual information about the file, such as the possible authors and the possible file formats, the keys can be removed. Additionally, the characters `{": [,]}` do not play nice with command line interaction. The second problem can be solved by removing those pesky characters from the condensed string, which produces the following string if the labels are removed before trimming that character set. Note that space have been replaced by underscores, since spaces do delimit words in most human languages, but cause issues at the command line; underscores perform the same function of delimiting words, while also playing nice with the command line.  
 
 ```
 /* condensed, keys removed */
@@ -50,7 +50,7 @@ Miss_K8AngerfistAct_on_Impulsemp3
 miss_k8angerfistact_on_impulsemp3
 ```
 
-There is now a new problem; it is impossible to tell the original fields of the metadata apart since trimming that character set removed the special characters JSON used to indicated nested data and data within a shared structure. This problem can be easily resolved by adding delimiters between fields of metadata in the condensed version; personally, I prefer to use `-` as a field delimiter, and `+` to delimit metadata items which were elements in a JSON list. This step produces the final string, which is a file name friendly version of the metadata:
+There is now a new problem; it is impossible to tell the original fields of the metadata apart since trimming that character set removed the special characters JSON used to indicated nested data and data within a shared structure. This problem can be easily resolved by adding delimiters between fields of metadata in the condensed version; personally, I prefer to use `-` (dash) as a field delimiter, and `+` (plus) to delimit metadata items which were elements in a JSON list. This step produces the final string, which is a file name friendly version of the metadata:
 
 ```
 /* condensed, keys removed, trimmed, lowercased, delimited */
